@@ -34,7 +34,7 @@ nano ~/.aliases
 
 : 'replace contents of .aliases with shortcuts for frequently used terminal commands'
 
-# Create and modify files for Z shell integration
+# Create and modify files for Zshell integration
 
 touch ~/.zprofile &&
 echo '[[ -e ~/.profile ]] && emulate sh -c "source ~/.profile"' > ~/.zprofile &&
@@ -42,6 +42,7 @@ echo '[[ -e ~/.profile ]] && emulate sh -c "source ~/.profile"' > ~/.zprofile &&
 # Modify ~/.zshrc
 
 echo 'source ~/.aliases' > ~/.zshrc &&
+
 
 # Install Xcode Command Line Tools (for GCC which is a Homebrew pre-requisite)
 
@@ -62,6 +63,24 @@ echo export PATH='/usr/local/bin:$PATH' >> ~/.profile
 source ~/.profile
 echo $PATH
 
+
+# Python (via Miniconda3)
+
+# Download latest version of Miniconda3
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O ~/Documents/miniconda.sh &&
+
+# Verify installer hashes
+shasum -a 256 /Users/jt/Documents/miniconda.sh
+
+# Install Miniconda3
+bash ~/Documents/miniconda.sh -p $HOME/miniconda
+
+# For a zsh (macOS Catalina default shell) compatible dotfiles replace the second line with
+# source <path to conda>/bin/activate
+# conda init zsh
+
+
+# Ruby
 # Install Ruby
 
 brew install rbenv ruby-build
@@ -97,8 +116,3 @@ gem install jekyll bundler
 # Rehash Ruby (necessary after installing bundler)
 
 rbenv rehash
-
-# Install Python (via miniconda)
-
-
-
